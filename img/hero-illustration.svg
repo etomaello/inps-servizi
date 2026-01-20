@@ -1,0 +1,60 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hero Illustration - Modern minimalist design -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0066CC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3399FF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00CC66;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#00CC66;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circles -->
+  <circle cx="500" cy="80" r="120" fill="url(#grad2)" opacity="0.5"/>
+  <circle cx="100" cy="320" r="80" fill="url(#grad2)" opacity="0.3"/>
+
+  <!-- Main illustration - Document/Service concept -->
+  <rect x="150" y="80" width="300" height="240" rx="8" fill="white" stroke="#E3E7EB" stroke-width="2"/>
+
+  <!-- Header bar -->
+  <rect x="150" y="80" width="300" height="50" rx="8" fill="url(#grad1)"/>
+  <circle cx="175" cy="105" r="5" fill="white" opacity="0.7"/>
+  <circle cx="195" cy="105" r="5" fill="white" opacity="0.7"/>
+  <circle cx="215" cy="105" r="5" fill="white" opacity="0.7"/>
+
+  <!-- Content lines -->
+  <rect x="180" y="160" width="240" height="12" rx="6" fill="#E3E7EB"/>
+  <rect x="180" y="185" width="200" height="12" rx="6" fill="#E3E7EB"/>
+  <rect x="180" y="210" width="220" height="12" rx="6" fill="#E3E7EB"/>
+
+  <!-- Button -->
+  <rect x="180" y="260" width="120" height="40" rx="20" fill="url(#grad1)"/>
+
+  <!-- Floating elements - representing services -->
+  <g opacity="0.8">
+    <circle cx="80" cy="150" r="30" fill="#00CC66"/>
+    <path d="M 70 150 L 75 160 L 90 145" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.8">
+    <circle cx="520" cy="200" r="30" fill="#0066CC"/>
+    <rect x="505" y="190" width="30" height="20" rx="2" fill="none" stroke="white" stroke-width="2"/>
+    <path d="M 505 195 L 520 205 L 535 195" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.8">
+    <circle cx="480" cy="320" r="25" fill="#F90"/>
+    <circle cx="480" cy="315" r="2" fill="white"/>
+    <rect x="477" y="320" width="6" height="10" rx="3" fill="white"/>
+  </g>
+
+  <!-- User icon -->
+  <g transform="translate(250, 240)">
+    <circle cx="0" cy="0" r="15" fill="#0066CC" opacity="0.2"/>
+    <circle cx="0" cy="-3" r="5" fill="#0066CC"/>
+    <path d="M -8 8 Q -8 2 0 2 Q 8 2 8 8" fill="#0066CC"/>
+  </g>
+</svg>
+
