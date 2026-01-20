@@ -108,5 +108,48 @@
     }
   });
 
+  var options = {path:"https://publish-p127204-e1900935.adobeaemcloud.com/content/forms/af/inps-forms/MV01_Modulo_Reclamo.html", dataRef:"", themepath:"", CSS_Selector:".adaptiveform-section .container"};
+
+
+  alert(options.path);
+  var loadAdaptiveForm = function(options){
+    //alert(options.path);
+    if(options.path) {
+      // options.path refers to the path of the adaptive form
+      // For Example: /content/forms/af/ABC, where ABC is the adaptive form
+      // Note: If AEM server is running on a context path, the adaptive form URL must contain the context path
+      var path = options.path;
+      path += "/jcr:content/guideContainer.html";
+      $.ajax({
+        url  : path ,
+        type : "GET",
+        data : {
+          // Set the wcmmode to be disabled
+          wcmmode : "disabled"
+          // Set the data reference, if any
+          // "dataRef": options.dataRef
+          // Specify a different theme for the form object
+          //  "themeOverride" : options.themepath
+        },
+        async: false,
+        success: function (data) {
+          // If jquery is loaded, set the inner html of the container
+          // If jquery is not loaded, use APIs provided by document to set the inner HTML but these APIs would not evaluate the script tag in HTML as per the HTML5 spec
+          // For example: document.getElementById().innerHTML
+          if(window.$ && options.CSS_Selector){
+            // HTML API of jquery extracts the tags, updates the DOM, and evaluates the code embedded in the script tag.
+            $(options.CSS_Selector).html(data);
+          }
+        },
+        error: function (data) {
+          // any error handler
+        }
+      });
+    } else {
+      if (typeof(console) !== "undefined") {
+        console.log("Path of Adaptive Form not specified to loadAdaptiveForm");
+      }
+    }
+  }(options);
   console.log('INPS-inspired website initialized');
 })();
