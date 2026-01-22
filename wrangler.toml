@@ -1,0 +1,12 @@
+# Wrangler Configuration for Cloudflare Pages Functions
+# Questo file configura il comportamento di Wrangler per il progetto
+
+name = "inps-servizi"
+compatibility_date = "2026-01-22"
+
+# Pages specific configuration
+pages_build_output_dir = "./dist"
+
+# Per maggiori informazioni:
+# https://developers.cloudflare.com/workers/wrangler/configuration/
+

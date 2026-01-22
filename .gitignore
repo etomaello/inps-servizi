@@ -9,6 +9,10 @@ yarn.lock
 dist/
 build/
 
+# Wrangler
+.wrangler/
+.dev.vars
+
 # IDE
 .idea/
 .vscode/

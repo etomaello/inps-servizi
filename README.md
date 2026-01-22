@@ -12,6 +12,41 @@ A GitHub Pages website inspired by the design and structure of the official INPS
 - 📰 News section
 - 🎯 Service cards and quick access links
 - 🌐 Multi-section navigation
+- ⚡ **Cloudflare Worker proxy for AEM content** (see below)
+
+## Cloudflare Worker - AEM Proxy
+
+This project includes a **Cloudflare Pages Function** that acts as a reverse proxy to Adobe AEM Cloud. The worker automatically forwards specific paths to the AEM backend while serving static assets from Cloudflare Pages.
+
+### Proxied Paths
+
+| Local Path | Forwarded To |
+|------------|-------------|
+| `/content/*` | `https://publish-p127204-e1900935.adobeaemcloud.com/content/*` |
+| `/etc/*` | `https://publish-p127204-e1900935.adobeaemcloud.com/etc/*` |
+| `/etc.clientlibs/*` | `https://publish-p127204-e1900935.adobeaemcloud.com/etc.clientlibs/*` |
+| `/libs/*` | `https://publish-p127204-e1900935.adobeaemcloud.com/libs/*` |
+
+### Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Test worker locally
+npm run dev:worker
+
+# Open test page
+open http://localhost:8788/worker-test.html
+```
+
+### Documentation
+
+- 📘 **[CLOUDFLARE_WORKER.md](CLOUDFLARE_WORKER.md)** - Complete worker documentation
+- 🚀 **[WORKER_QUICKSTART.md](WORKER_QUICKSTART.md)** - Quick start guide
+- 🧪 **[worker-test.html](worker-test.html)** - Interactive test page
+
+The worker is automatically deployed when you push to GitHub (if using Cloudflare Pages).
 
 ## Design Elements
 

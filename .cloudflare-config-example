@@ -1,0 +1,50 @@
+# Cloudflare Pages Configuration Example
+
+# Questa è una configurazione di esempio per Cloudflare Pages.
+# Non è strettamente necessaria perché Cloudflare Pages rileva automaticamente
+# la configurazione dal package.json e dalla struttura del progetto.
+
+# Se vuoi personalizzare ulteriormente, puoi creare un file wrangler.toml
+# nella root del progetto (ma per Pages Functions è opzionale).
+
+## Build Configuration (da impostare nel Dashboard)
+
+Production branch: main
+Build command: npm run build
+Build output directory: dist
+Root directory: /
+
+## Environment Variables (se necessarie)
+
+# AEM_ORIGIN=https://publish-p127204-e1900935.adobeaemcloud.com
+# NODE_VERSION=18
+
+## Advanced Settings
+
+# Branch deployments: Enabled
+# Build watch paths: Automatic
+# Deployment notifications: Email/Webhook
+
+## Functions Settings
+
+# Il worker in functions/_middleware.js viene deployato automaticamente
+# Non serve configurazione aggiuntiva!
+
+## Custom Domain (opzionale)
+
+# Puoi configurare un dominio personalizzato:
+# 1. Pages → Your Project → Custom domains
+# 2. Add custom domain
+# 3. Follow DNS configuration steps
+
+## Compatibility Date
+
+# La compatibility date è ora configurata in wrangler.toml
+# Vedi il file wrangler.toml nella root del progetto:
+
+# name = "inps-github-forms-areaprivata"
+# compatibility_date = "2026-01-22"
+# pages_build_output_dir = "./dist"
+
+# Questo previene breaking changes e garantisce comportamento consistente.
+
