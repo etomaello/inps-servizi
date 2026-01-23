@@ -1,0 +1,49 @@
+/*
+ * Search Section Component
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.area-privata {
+  .ap-search-section {
+    padding: $ap-spacing-xl 0;
+    background-color: $ap-gray-100;
+  }
+
+  .ap-search-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 1.75rem;
+      color: $ap-dark;
+    }
+  }
+
+  .ap-search-box {
+    display: flex;
+    gap: $ap-spacing-sm;
+    align-items: stretch;
+
+    input {
+      flex: 1;
+      border: 2px solid $ap-gray-300;
+      border-radius: $ap-radius-sm;
+      padding: 0.75rem 1.25rem;
+      font-size: 1.1rem;
+
+      &:focus {
+        @include ap-focus-ring;
+        border-color: $ap-primary;
+      }
+    }
+
+    button {
+      white-space: nowrap;
+      border-radius: $ap-radius-sm;
+      padding: 0.75rem $ap-spacing-lg;
+    }
+  }
+}
+

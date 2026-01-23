@@ -1,0 +1,80 @@
+/*
+ * Responsive Design
+ */
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.area-privata {
+  // Large devices (max-width: 991px)
+  @include ap-respond-to('lg') {
+    .ap-hero-title {
+      font-size: 2.25rem;
+    }
+
+    .ap-hero {
+      padding: $ap-spacing-xl 0;
+    }
+
+    .ap-section-title {
+      font-size: 1.75rem;
+    }
+
+    .ap-navbar-collapse {
+      background-color: $ap-primary-dark;
+      padding: $ap-spacing-sm;
+      margin-top: $ap-spacing-sm;
+    }
+  }
+
+  // Medium devices (max-width: 767px)
+  @include ap-respond-to('md') {
+    .ap-header-logo img {
+      height: 40px;
+    }
+
+    .ap-header-title {
+      font-size: 1rem;
+      margin-left: $ap-spacing-xs;
+    }
+
+    .ap-hero-title {
+      font-size: 1.75rem;
+    }
+
+    .ap-hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .ap-search-box {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .ap-hero-cta .ap-btn {
+      display: block;
+      width: 100%;
+    }
+
+    .ap-header-actions .ap-btn-outline-primary {
+      font-size: 0.8em;
+      padding: 1em;
+    }
+  }
+
+  // Small devices (max-width: 575px)
+  @include ap-respond-to('sm') {
+    .ap-section-title {
+      font-size: 1.5rem;
+    }
+
+    .ap-service-card,
+    .ap-news-card {
+      margin-bottom: $ap-spacing-sm;
+    }
+  }
+}
+

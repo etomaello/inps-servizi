@@ -1,0 +1,103 @@
+/*
+ * Header Component - Top bar, logo, navigation
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.area-privata {
+  // Skip Links (Accessibility)
+  .ap-skip-links {
+    position: relative;
+  }
+
+  .ap-skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: $ap-primary;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+
+    &:focus {
+      top: 0;
+    }
+  }
+
+  // Header
+  .ap-header {
+    background: white;
+    box-shadow: $ap-shadow-sm;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .ap-header-top {
+    padding: $ap-spacing-sm 0;
+    border-bottom: 1px solid $ap-gray-200;
+  }
+
+  .ap-header-logo {
+    img {
+      height: 60px;
+    }
+  }
+
+  .ap-header-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $ap-dark;
+    margin-left: $ap-spacing-sm;
+    vertical-align: middle;
+  }
+
+  .ap-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $ap-spacing-xs;
+  }
+
+  // Navigation
+  .ap-navbar {
+    padding: 0;
+    background-color: $ap-primary !important;
+
+    .ap-nav-link {
+      padding: $ap-spacing-sm 1.25rem;
+      color: rgba(255, 255, 255, 0.95) !important;
+      font-weight: 600;
+      transition: all $ap-transition-normal;
+
+      &:hover,
+      &:focus {
+        color: white !important;
+        background-color: $ap-primary-dark;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .ap-dropdown-menu {
+    border: none;
+    box-shadow: $ap-shadow-md;
+    border-radius: 0;
+    padding: $ap-spacing-xs 0;
+  }
+
+  .ap-dropdown-item {
+    padding: 0.75rem $ap-spacing-md;
+    color: $ap-text;
+    transition: all $ap-transition-fast;
+
+    &:hover {
+      background-color: $ap-gray-100;
+      color: $ap-primary;
+      text-decoration: none;
+    }
+  }
+}
+

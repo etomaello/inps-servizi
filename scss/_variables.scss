@@ -1,0 +1,57 @@
+/*
+ * Variables - INPS Color Palette & Typography
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
+
+// Color Palette
+$ap-primary: #0066CC;
+$ap-primary-dark: #004D99;
+$ap-primary-light: #3399FF;
+$ap-secondary: #00CC66;
+$ap-dark: #17324D;
+$ap-gray-100: #F5F6F7;
+$ap-gray-200: #E3E7EB;
+$ap-gray-300: #CED4DA;
+$ap-gray-600: #5C6F82;
+$ap-gray-800: #435A70;
+$ap-text: #17324D;
+$ap-link: #0066CC;
+$ap-danger: #D9364F;
+$ap-warning: #F90;
+$ap-success: #00CC66;
+
+// Typography
+$ap-font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+// Spacing
+$ap-spacing-xs: 0.5rem;
+$ap-spacing-sm: 1rem;
+$ap-spacing-md: 1.5rem;
+$ap-spacing-lg: 2rem;
+$ap-spacing-xl: 3rem;
+$ap-spacing-xxl: 5rem;
+
+// Transitions
+$ap-transition-fast: 0.2s ease;
+$ap-transition-normal: 0.3s ease;
+$ap-transition-slow: 0.5s ease;
+
+// Border Radius
+$ap-radius-sm: 4px;
+$ap-radius-md: 8px;
+$ap-radius-lg: 12px;
+$ap-radius-circle: 50%;
+
+// Shadows
+$ap-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$ap-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+$ap-shadow-lg: 0 8px 24px rgba(0, 102, 204, 0.15);
+$ap-shadow-primary: 0 4px 12px rgba(0, 102, 204, 0.3);
+
+// Breakpoints
+$ap-breakpoint-sm: 576px;
+$ap-breakpoint-md: 768px;
+$ap-breakpoint-lg: 992px;
+$ap-breakpoint-xl: 1200px;
+

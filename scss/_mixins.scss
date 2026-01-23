@@ -1,0 +1,58 @@
+/*
+ * Mixins - Reusable SCSS patterns
+ */
+
+@use 'variables' as *;
+
+// Responsive breakpoints
+@mixin ap-respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: #{$ap-breakpoint-sm - 1}) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: #{$ap-breakpoint-md - 1}) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: #{$ap-breakpoint-lg - 1}) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: #{$ap-breakpoint-xl - 1}) { @content; }
+  }
+}
+
+// Card styles
+@mixin ap-card {
+  background: white;
+  border: 2px solid $ap-gray-200;
+  border-radius: $ap-radius-md;
+  transition: all $ap-transition-normal;
+}
+
+@mixin ap-card-hover {
+  border-color: $ap-primary;
+  box-shadow: $ap-shadow-lg;
+  transform: translateY(-5px);
+}
+
+// Flex center
+@mixin ap-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Text truncate
+@mixin ap-text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Gradient background
+@mixin ap-gradient-primary {
+  background: linear-gradient(135deg, $ap-primary 0%, $ap-primary-dark 100%);
+}
+
+// Focus state
+@mixin ap-focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba($ap-primary, 0.1);
+}
+

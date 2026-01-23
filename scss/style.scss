@@ -1,0 +1,20 @@
+/*
+ * INPS Area Privata - Main SCSS File
+ * All styles are namespaced with .area-privata to avoid conflicts
+ */
+
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'base';
+@use 'components/header';
+@use 'components/hero';
+@use 'components/search';
+@use 'components/services';
+@use 'components/quick-access';
+@use 'components/news';
+@use 'components/footer';
+@use 'components/buttons';
+@use 'utilities';
+@use 'responsive';
+@use 'print';
+

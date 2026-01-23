@@ -1,0 +1,60 @@
+/*
+ * Utility Classes
+ */
+
+@use 'variables' as *;
+
+.area-privata {
+  // Visibility utilities
+  .ap-hidden,
+  [hidden] {
+    display: none !important;
+  }
+
+  .ap-visually-hidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+
+    &.ap-focusable:active,
+    &.ap-focusable:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      white-space: inherit;
+      width: auto;
+    }
+  }
+
+  .ap-invisible {
+    visibility: hidden;
+  }
+
+  // Clearfix
+  .ap-clearfix {
+    &::before,
+    &::after {
+      content: "";
+      display: table;
+    }
+
+    &::after {
+      clear: both;
+    }
+  }
+
+  // Adaptive Form Section
+  .ap-adaptiveform-section {
+    padding: $ap-spacing-xl 0;
+    min-height: 400px;
+  }
+}
+

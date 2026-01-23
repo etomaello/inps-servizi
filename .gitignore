@@ -13,6 +13,11 @@ build/
 .wrangler/
 .dev.vars
 
+# SASS generated CSS (keep scss/, ignore compiled css/)
+css/style.css
+css/style.css.map
+.sass-cache/
+
 # IDE
 .idea/
 .vscode/

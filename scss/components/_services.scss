@@ -1,0 +1,72 @@
+/*
+ * Services Section Component
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.area-privata {
+  .ap-services-section {
+    padding: $ap-spacing-xxl 0;
+    background-color: white;
+  }
+
+  .ap-section-title {
+    font-size: 2.25rem;
+    color: $ap-dark;
+    margin-bottom: $ap-spacing-sm;
+    position: relative;
+    display: inline-block;
+  }
+
+  .ap-service-card {
+    @include ap-card;
+    padding: $ap-spacing-lg;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      @include ap-card-hover;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: $ap-dark;
+    }
+
+    p {
+      color: $ap-gray-600;
+      margin-bottom: $ap-spacing-md;
+      flex: 1;
+    }
+
+    .ap-btn-link {
+      color: $ap-primary;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: $ap-spacing-xs;
+
+      &:hover {
+        color: $ap-primary-dark;
+        gap: 0.75rem;
+      }
+    }
+  }
+
+  .ap-service-icon {
+    width: 80px;
+    height: 80px;
+    @include ap-gradient-primary;
+    border-radius: $ap-radius-circle;
+    @include ap-flex-center;
+    margin: 0 auto $ap-spacing-md;
+    font-size: 2rem;
+    color: white;
+  }
+}
+

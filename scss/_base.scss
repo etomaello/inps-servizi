@@ -1,0 +1,66 @@
+/*
+ * Base Styles - Typography, Links, Base Elements
+ */
+
+@use 'variables' as *;
+
+.area-privata {
+  // Reset
+  * {
+    box-sizing: border-box;
+  }
+
+  // Base styles
+  font-family: $ap-font-family;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $ap-text;
+  background-color: #fff;
+
+  // Typography
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: $ap-spacing-sm;
+    color: $ap-dark;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+
+  // Links
+  a {
+    color: $ap-link;
+    text-decoration: none;
+    transition: all $ap-transition-normal;
+
+    &:hover {
+      color: $ap-primary-dark;
+      text-decoration: underline;
+    }
+  }
+
+  // Images
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+
+  // Forms
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  audio, canvas, iframe, svg, video {
+    vertical-align: middle;
+  }
+}
+

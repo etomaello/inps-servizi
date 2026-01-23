@@ -1,0 +1,62 @@
+/*
+ * News Section Component
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.area-privata {
+  .ap-news-section {
+    padding: $ap-spacing-xxl 0;
+    background-color: white;
+  }
+
+  .ap-news-card {
+    background: white;
+    border: 1px solid $ap-gray-200;
+    border-left: 4px solid $ap-primary;
+    border-radius: $ap-radius-sm;
+    padding: $ap-spacing-md;
+    height: 100%;
+    transition: all $ap-transition-normal;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: $ap-dark;
+    }
+
+    p {
+      color: $ap-gray-600;
+      margin-bottom: $ap-spacing-sm;
+    }
+
+    .ap-btn-link {
+      color: $ap-primary;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: $ap-spacing-xs;
+
+      &:hover {
+        color: $ap-primary-dark;
+        gap: 0.75rem;
+      }
+    }
+  }
+
+  .ap-news-date {
+    color: $ap-primary;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+}
+

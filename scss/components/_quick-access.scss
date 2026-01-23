@@ -1,0 +1,46 @@
+/*
+ * Quick Access Section Component
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.area-privata {
+  .ap-quick-access-section {
+    padding: $ap-spacing-xxl 0;
+    background-color: $ap-gray-100;
+  }
+
+  .ap-quick-link-card {
+    display: flex;
+    align-items: center;
+    gap: $ap-spacing-sm;
+    padding: $ap-spacing-md;
+    background: white;
+    border: 2px solid $ap-gray-200;
+    border-radius: $ap-radius-md;
+    color: $ap-text;
+    text-decoration: none;
+    transition: all $ap-transition-normal;
+    font-weight: 600;
+
+    &:hover {
+      border-color: $ap-primary;
+      background-color: $ap-primary;
+      color: white;
+      text-decoration: none;
+      transform: translateX(5px);
+
+      i {
+        color: white;
+      }
+    }
+
+    i {
+      font-size: 1.5rem;
+      color: $ap-primary;
+      transition: color $ap-transition-normal;
+    }
+  }
+}
+

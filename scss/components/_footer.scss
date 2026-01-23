@@ -1,0 +1,77 @@
+/*
+ * Footer Component
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.area-privata {
+  .ap-footer {
+    background-color: $ap-dark;
+    color: white;
+  }
+
+  .ap-footer-main {
+    padding: 4rem 0 $ap-spacing-lg;
+  }
+
+  .ap-footer-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: $ap-spacing-md;
+    color: white;
+  }
+
+  .ap-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color $ap-transition-normal;
+
+      &:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .ap-social-links {
+    display: flex;
+    gap: $ap-spacing-sm;
+
+    a {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: $ap-radius-circle;
+      @include ap-flex-center;
+      color: white;
+      transition: all $ap-transition-normal;
+
+      &:hover {
+        background-color: $ap-primary;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  .ap-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: $ap-spacing-md 0;
+
+    p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.875rem;
+    }
+  }
+}
+
