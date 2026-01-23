@@ -22,7 +22,7 @@
 
   // Add active class to navbar on scroll
   window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.ap-header');
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
     } else {
@@ -94,7 +94,7 @@
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(dropdown => {
     const toggle = dropdown.querySelector('.dropdown-toggle');
-    const menu = dropdown.querySelector('.dropdown-menu');
+    const menu = dropdown.querySelector('.ap-dropdown-menu');
 
     if (toggle && menu) {
       toggle.addEventListener('keydown', function(e) {
