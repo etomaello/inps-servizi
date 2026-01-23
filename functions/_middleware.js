@@ -16,7 +16,8 @@ const AEM_ORIGIN = 'https://publish-p127204-e1900935.adobeaemcloud.com';
 const PROXY_PATHS = [
   '/etc.clientlibs', // Nota: questo deve venire prima di /etc per evitare match parziali
   '/etc',
-  '/libs'
+  '/libs',
+  '/bin'
 ];
 
 /**
