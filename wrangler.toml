@@ -5,7 +5,7 @@ name = "inps-servizi"
 compatibility_date = "2026-01-22"
 
 # Pages specific configuration
-pages_build_output_dir = "./dist"
+pages_build_output_dir = "./"
 
 # Per maggiori informazioni:
 # https://developers.cloudflare.com/workers/wrangler/configuration/
