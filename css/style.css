@@ -133,6 +133,14 @@ img {
   gap: 0.5rem;
 }
 
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--inps-dark);
+  margin-left: 1rem;
+  vertical-align: middle;
+}
+
 /* Navigation */
 .navbar {
   padding: 0;
@@ -586,6 +594,16 @@ img {
 }
 
 @media (max-width: 767px) {
+
+  .header-logo img {
+    height: 40px;
+  }
+
+  .header-title {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+
   .hero-title {
     font-size: 1.75rem;
   }
@@ -606,10 +624,12 @@ img {
     display: block;
     width: 100%;
   }
+
+  .header-actions .btn.btn-outline-primary {
+    font-size: 0.8em;
+    padding: 1em;
+  }
 }
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
 
 audio,
 canvas,

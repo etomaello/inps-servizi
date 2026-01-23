@@ -108,10 +108,10 @@
     }
   });
 
-  var options = {path:"https://publish-p127204-e1900935.adobeaemcloud.com/content/forms/af/inps-forms/MV01_Modulo_Reclamo.html", dataRef:"", themepath:"", CSS_Selector:".adaptiveform-section .container"};
-  //var options = {path:"http://local.adobeaemcloud.com:8080//content/forms/af/inps-forms/MV01_Modulo_Reclamo.html", dataRef:"", themepath:"", CSS_Selector:".adaptiveform-section .container"};
+  //var options = {path:"https://publish-p127204-e1900935.adobeaemcloud.com/content/forms/af/inps-forms/MV01_Modulo_Reclamo.html", dataRef:"", themepath:"", CSS_Selector:".adaptiveform-section .container"};
+  var options = {path:"http://local.adobeaemcloud.com:8080//content/forms/af/inps-forms/MV01_Modulo_Reclamo.html", dataRef:"", themepath:"", CSS_Selector:".adaptiveform-section .container"};
 
-  alert(options.path);
+  //alert(options.path);
   var loadAdaptiveForm = function(options){
     //alert(options.path);
     if(options.path) {

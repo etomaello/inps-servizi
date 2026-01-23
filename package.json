@@ -15,8 +15,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
-    "serve": "npx http-server -p 8080 -o",
-    "dev:worker": "npm run build && npx wrangler pages dev ./dist --port 8788"
+    "serve": "npx http-server -a localhost -p 6370 -o",
+    "dev:worker": "npm run build && npx wrangler pages dev ./ --port 8788"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
