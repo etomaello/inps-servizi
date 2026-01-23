@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test POST Request - Cloudflare Worker</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #0066cc;
+            border-radius: 4px;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+        button.delete {
+            background: #dc3545;
+        }
+        button.delete:hover {
+            background: #c82333;
+        }
+        button.put {
+            background: #ffc107;
+            color: #000;
+        }
+        button.put:hover {
+            background: #e0a800;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success {
+            border-left: 4px solid #28a745;
+        }
+        .error {
+            border-left: 4px solid #dc3545;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 100px;
+            font-family: 'Courier New', monospace;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin-top: 10px;
+        }
+        .info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            border-left: 4px solid #0066cc;
+        }
+        .method-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 11px;
+            margin-right: 5px;
+        }
+        .method-get { background: #28a745; color: white; }
+        .method-post { background: #0066cc; color: white; }
+        .method-put { background: #ffc107; color: black; }
+        .method-delete { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test HTTP Methods - Cloudflare Worker</h1>
+
+        <div class="info">
+            <strong>ℹ️ Informazioni:</strong><br>
+            Questa pagina testa che il worker Cloudflare inoltri correttamente tutti i metodi HTTP (GET, POST, PUT, DELETE) verso AEM.<br>
+            <strong>Percorsi testati:</strong> /bin/*, /etc/*, /etc.clientlibs/*, /libs/*
+        </div>
+
+        <div class="test-section">
+            <h2>Test Configurabile</h2>
+
+            <label for="testPath">Path da testare:</label>
+            <input type="text" id="testPath" value="/bin/querybuilder.json" placeholder="/bin/example">
+
+            <label for="postData">Payload JSON (per POST/PUT):</label>
+            <textarea id="postData" placeholder='{"key": "value"}'>{
+  "path": "/content",
+  "type": "cq:Page",
+  "p.limit": "10"
+}</textarea>
+
+            <div style="margin-top: 15px;">
+                <button onclick="testRequest('GET')">
+                    <span class="method-badge method-get">GET</span>
+                    Test GET
+                </button>
+                <button onclick="testRequest('POST')">
+                    <span class="method-badge method-post">POST</span>
+                    Test POST
+                </button>
+                <button class="put" onclick="testRequest('PUT')">
+                    <span class="method-badge method-put">PUT</span>
+                    Test PUT
+                </button>
+                <button class="delete" onclick="testRequest('DELETE')">
+                    <span class="method-badge method-delete">DELETE</span>
+                    Test DELETE
+                </button>
+            </div>
+
+            <div id="result" class="result" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>Test Rapidi Predefiniti</h2>
+
+            <h3>GET Requests</h3>
+            <button onclick="quickTest('GET', '/etc/designs.html')">
+                GET /etc/designs.html
+            </button>
+            <button onclick="quickTest('GET', '/libs/granite/ui/content/dumplibs.html')">
+                GET /libs/granite/ui/content/dumplibs.html
+            </button>
+
+            <h3 style="margin-top: 20px;">POST Requests</h3>
+            <button onclick="quickTestPost('/bin/querybuilder.json', {path: '/content', type: 'cq:Page'})">
+                POST /bin/querybuilder.json
+            </button>
+            <button onclick="quickTestPost('/bin/wcm/contentfinder/asset/view.json', {query: '*', mimeType: 'image/*'})">
+                POST /bin/wcm/contentfinder/asset/view.json
+            </button>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Metodi HTTP Supportati</h2>
+            <ul>
+                <li><span class="method-badge method-get">GET</span> Lettura risorse</li>
+                <li><span class="method-badge method-post">POST</span> Invio dati / Creazione risorse</li>
+                <li><span class="method-badge method-put">PUT</span> Aggiornamento risorse</li>
+                <li><span class="method-badge method-delete">DELETE</span> Eliminazione risorse</li>
+            </ul>
+            <p><strong>Tutti questi metodi vengono inoltrati correttamente ad AEM dal worker!</strong></p>
+        </div>
+    </div>
+
+    <script>
+        async function testRequest(method) {
+            const path = document.getElementById('testPath').value;
+            const postDataText = document.getElementById('postData').value;
+            const resultDiv = document.getElementById('result');
+
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result';
+            resultDiv.textContent = `Testing ${method} ${path}...\n`;
+
+            try {
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                // Aggiungi body solo per POST e PUT
+                if (method === 'POST' || method === 'PUT') {
+                    try {
+                        const jsonData = JSON.parse(postDataText);
+                        options.body = JSON.stringify(jsonData);
+                    } catch (e) {
+                        // Se non è JSON valido, invia come stringa
+                        options.body = postDataText;
+                    }
+                }
+
+                const startTime = performance.now();
+                const response = await fetch(path, options);
+                const endTime = performance.now();
+                const duration = (endTime - startTime).toFixed(2);
+
+                const headers = {};
+                response.headers.forEach((value, key) => {
+                    headers[key] = value;
+                });
+
+                let body = '';
+                const contentType = response.headers.get('content-type');
+
+                if (contentType && contentType.includes('json')) {
+                    try {
+                        const json = await response.json();
+                        body = JSON.stringify(json, null, 2);
+                    } catch (e) {
+                        body = await response.text();
+                    }
+                } else if (contentType && contentType.includes('text/')) {
+                    body = await response.text();
+                    if (body.length > 1000) {
+                        body = body.substring(0, 1000) + '\n... (truncated)';
+                    }
+                } else {
+                    body = `[Binary content, ${response.headers.get('content-length') || 'unknown'} bytes]`;
+                }
+
+                resultDiv.className = response.ok ? 'result success' : 'result error';
+                resultDiv.textContent =
+                    `✓ ${method} Request completed in ${duration}ms\n\n` +
+                    `URL: ${path}\n` +
+                    `Status: ${response.status} ${response.statusText}\n` +
+                    `Method: ${method}\n\n` +
+                    `Headers:\n${JSON.stringify(headers, null, 2)}\n\n` +
+                    `Response Body:\n${body}`;
+
+                console.log(`${method} ${path}:`, {
+                    status: response.status,
+                    duration: `${duration}ms`,
+                    headers,
+                    body
+                });
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent =
+                    `✗ ${method} Request Failed\n\n` +
+                    `Error: ${error.message}\n\n` +
+                    `Stack: ${error.stack}`;
+                console.error(`${method} ${path} failed:`, error);
+            }
+        }
+
+        async function quickTest(method, path) {
+            document.getElementById('testPath').value = path;
+            if (method === 'POST' || method === 'PUT') {
+                document.getElementById('postData').value = '{}';
+            }
+            await testRequest(method);
+        }
+
+        async function quickTestPost(path, data) {
+            document.getElementById('testPath').value = path;
+            document.getElementById('postData').value = JSON.stringify(data, null, 2);
+            await testRequest('POST');
+        }
+
+        // Log al caricamento
+        window.addEventListener('load', () => {
+            console.log('POST Test page loaded');
+            console.log('Worker is configured to proxy these paths:', [
+                '/etc.clientlibs',
+                '/etc',
+                '/libs',
+                '/bin'
+            ]);
+            console.log('All HTTP methods (GET, POST, PUT, DELETE, etc.) are forwarded to AEM');
+        });
+    </script>
+</body>
+</html>
+

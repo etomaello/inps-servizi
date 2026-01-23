@@ -11,11 +11,13 @@
  */
 
 const AEM_ORIGIN = 'https://publish-p127204-e1900935.adobeaemcloud.com';
+//const AEM_ORIGIN = 'http://local.adobeaemcloud.com:8080';
 
 // Percorsi da proxy verso AEM
 const PROXY_PATHS = [
   '/etc.clientlibs', // Nota: questo deve venire prima di /etc per evitare match parziali
   '/etc',
+  '/content/forms',
   '/libs',
   '/bin'
 ];
@@ -43,16 +45,19 @@ export async function onRequest(context) {
     // Costruisce l'URL di destinazione AEM
     const aemUrl = new URL(url.pathname + url.search, AEM_ORIGIN);
 
+    // Determina se la richiesta ha un body (POST, PUT, PATCH, etc.)
+    const hasBody = request.method !== 'GET' && request.method !== 'HEAD';
+
     // Crea una nuova richiesta verso AEM
     const aemRequest = new Request(aemUrl.toString(), {
       method: request.method,
       headers: request.headers,
-      body: request.body,
+      body: hasBody ? request.body : undefined,
       redirect: 'manual'
     });
 
     try {
-      // Inoltra la richiesta ad AEM
+      // Inoltra la richiesta ad AEM.
       const response = await fetch(aemRequest);
 
       // Crea una nuova response con gli headers modificati
@@ -62,7 +67,7 @@ export async function onRequest(context) {
       newResponse.headers.set('Access-Control-Allow-Origin', '*');
 
       // Log per debugging (visibile nei logs di Cloudflare)
-      console.log(`Proxied: ${url.pathname} -> ${aemUrl.toString()} [${response.status}]`);
+      console.log(`Proxied [${request.method}]: ${url.pathname} -> ${aemUrl.toString()} [${response.status}]`);
 
       return newResponse;
     } catch (error) {
