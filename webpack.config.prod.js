@@ -18,6 +18,8 @@ module.exports = merge(common, {
         { from: 'favicon.ico', to: 'favicon.ico' },
         { from: 'robots.txt', to: 'robots.txt' },
         { from: 'icon.png', to: 'icon.png' },
+        { from: 'thank-you.html', to: 'thank-you.html' },
+        { from: 'error.html', to: 'error.html' },
         { from: '404.html', to: '404.html' },
         { from: 'site.webmanifest', to: 'site.webmanifest' },
       ],
